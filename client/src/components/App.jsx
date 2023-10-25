@@ -1,7 +1,9 @@
 //import relevant component files
 import React from 'react';
-import MovieList from './MovieList.js';
-import MovieListItem from './MovieListItem.js';
+import MovieList from './MovieList.jsx';
+import MovieListItem from './MovieListItem.jsx';
+import Search from './MovieListItem.jsx';
+
 
 //test data
 const movies = [
@@ -22,8 +24,9 @@ const App = (props) => {
   //need to render out the movie list component in its own div with movies passed in
   return (
     <div>
-      <h1 class="title">MovieList</h1>
-      <div class="movie-list">< MovieList movies={movies} /></div>
+      <h1 className="title">MovieList</h1>
+      <div></div>
+      <div>< MovieList movies={movies} /></div>
     </div>
   );
 }
