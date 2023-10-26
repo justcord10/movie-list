@@ -1,9 +1,21 @@
 import React from 'react';
 
-const Search = () => {
-  //need a button component and an input field!
+//need a button component and an input field!
+const Search = ({handleClick}) => {
+  //states
+  const [inputText, setInputText] = React.useState('');
+
+  //event handler for typing into the search bar
+  const handleChange = (e) => {
+    setInputText(e.target.value);
+    console.log(e.target.value);
+  };
+
   return (
-    <div className='Search'>Search Stuff Here!!</div>
+    <div className='Search'>
+      <input className='input' placeholder='Search...' onChange={(e)=>{handleChange(e)}}></input>
+      <button className='search-button' onClick={()=>{handleClick(inputText)}}>Go!</button>
+    </div>
   );
 }
 
