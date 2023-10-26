@@ -94,11 +94,18 @@ const App = (props) => {
   const filterHandleClick = (isWatched) => {
     console.log(isWatched);
     //declare empty results array
+    var results = [];
     //copy movieList using spread operator
+    var copyList = [...movieList];
     //iterate through the copy list
+    for (let i = 0; i < copyList.length; i++) {
       //if the current movies watched value matches isWatched
-        //push that object onto the results list
+      //push that object onto the results list
+      copyList[i].watched === isWatched ? results.push(copyList[i]): results;
+    }
+    //test passed //console.log(results);
     //set the displayedList with results
+    setDisplayedList(results);
   };
 
   //need to have a title at the top in its own little bar
