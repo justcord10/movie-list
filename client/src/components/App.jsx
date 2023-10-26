@@ -3,6 +3,7 @@ import React from 'react';
 import MovieList from './MovieList.jsx';
 import MovieListItem from './MovieListItem.jsx';
 import Search from './Search.jsx';
+import Add from './Add.jsx';
 
 const {useState} = React;
 
@@ -20,14 +21,14 @@ const App = (props) => {
 //States
   //input text down in Search.jsx
   //movie list
-  const [movieList, setMovieList] = React.useState(movies);
+  const [movieList, setMovieList] = React.useState([]);
   //search Results List
   const [searchResultsList, setSearchResultsList] = React.useState('');// which one is clearer??? this or const [query, setQuery] = useState('');
   //displayed List
-  const [displayedList, setDisplayedList] = React.useState(movies);
+  const [displayedList, setDisplayedList] = React.useState([]);
 
   //event Handler functions
-  const handleClick = (query) => {
+  const searchHandleClick = (query) => {
     console.log('Clicked!');
     console.log(query);
     //declare empty array for search results list variable
@@ -59,13 +60,25 @@ const App = (props) => {
     console.log(displayedList);
   }
 
+  const addHandleClick = (movieTitle) => {
+    console.log('clicked');
+    console.log(movieTitle);
+    //new variable to hold the clone array of objects, with the added movie's object (use the spread operator!!)
+    var newMovieList = [...movieList, {title:movieTitle}];
+    console.log(newMovieList);
+    //set the movie list with the new one
+    setMovieList(newMovieList);
+    //set the displayed movie list with the new one
+    setDisplayedList(newMovieList);
+  };
 
   //need to have a title at the top in its own little bar
   //need to render out the movie list component in its own div with movies passed in
   return (
     <div>
       <h1 className="title">MovieList</h1>
-      <div>< Search handleClick={handleClick}/></div>
+      <div>< Add addHandleClick={addHandleClick}/></div>
+      <div>< Search searchHandleClick={searchHandleClick} /></div>
       <div>< MovieList movies={displayedList} /></div>
     </div>
   );
