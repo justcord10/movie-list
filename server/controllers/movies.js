@@ -20,6 +20,16 @@ module.exports = {
       }
     });
   },
+  put: function (req, res) {
+    const movie = req.body.name;
+    models.movies.update(movie, (err, data) => {
+      if (err) {
+        res.status(400).send(err);
+      } else {
+        res.status(200).send(data);
+      }
+    });
+  },
   invalid: function (req, res) {
     models.movies.invalid(() => {
       res.status(400).send('Hello World!');

@@ -5,7 +5,7 @@ var controllers = require('./controllers');
 //attach proper methods to it.
 router.get('/movies', controllers.movies.get);
 router.post('/movies', controllers.movies.post);
-router.put('/movies', controllers.movies.invalid);
+router.put('/movies', controllers.movies.put);
 router.patch('/movies', controllers.movies.invalid);
 router.delete('/movies', controllers.movies.invalid);
 router.head('/movies', controllers.movies.invalid);

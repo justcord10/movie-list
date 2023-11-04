@@ -15,6 +15,14 @@ module.exports = {
         callback(err, data);
       });
   },
+  update: function (movie, callback) {
+    //need to toggle the watched property of the resource with name = movie
+    db.query('UPDATE movies SET watched = watched XOR 1 WHERE name = ?',
+    [movie],
+    (err, data) => {
+      callback(err, data);
+    });
+  },
   invalid: function (callback) {
     callback();
   }
