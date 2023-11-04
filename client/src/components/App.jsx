@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 //import relevant component files
 import React from 'react';
 import MovieList from './MovieList.jsx';
@@ -7,21 +9,13 @@ import Add from './Add.jsx';
 
 const {useState} = React;
 
-//test data
-const movies = [
-  {title: 'Mean Girls'},
-  {title: 'Hackers'},
-  {title: 'The Grey'},
-  {title: 'Sunshine'},
-  {title: 'Ex Machina'},
-];
-
 //need to change to allow js logic
-const App = (props) => {
+const App = ({movies}) => {
+  console.log(movies);
 //States
   //input text down in Search.jsx
   //movie list
-  const [movieList, setMovieList] = React.useState([]);
+  const [movieList, setMovieList] = React.useState(movies);
   //search Results List
   const [searchResultsList, setSearchResultsList] = React.useState('');// which one is clearer??? this or const [query, setQuery] = useState('');
   //displayed List
