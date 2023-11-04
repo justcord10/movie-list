@@ -40,12 +40,12 @@ const App = () => {
     }
     var copyList = JSON.parse(JSON.stringify(movieList));
     for (let i = 0; i < copyList.length; i++) {
-      if (copyList[i].title.includes(query)) {
+      if (copyList[i].name.includes(query)) {
         results.push(copyList[i]);
       }
     }
     if (results.length === 0) {
-      setDisplayedList([{title:'no movie by that name found'}]);
+      setDisplayedList([{name:'no movie by that name found'}]);
     } else {
       setDisplayedList(results);
     }
@@ -53,7 +53,7 @@ const App = () => {
   }
 
   const addHandleClick = (movieTitle) => {
-    var newMovieList = [...movieList, {title:movieTitle, watched: false}];
+    var newMovieList = [...movieList, {name:movieTitle, watched: false}];
     setMovieList(newMovieList);
     setDisplayedList(newMovieList);
     //need to update the db with an api call
@@ -68,17 +68,17 @@ const App = () => {
     });
   };
 
-  const watchedHandleClick = (title) => {
+  const watchedHandleClick = (name) => {
     var copyList = [...movieList];
     for (let i = 0; i < copyList.length; i++) {
-      if (copyList[i].title === title) {
+      if (copyList[i].name === name) {
         copyList[i].watched === false ? copyList[i].watched = true : copyList[i].watched = false;
       };
     }
     setMovieList(copyList);
     setDisplayedList(copyList);
-    //toggle the db resource watched property for the movie with the name === title
-    axios.put('/api/movies', {name:title})
+    //toggle the db resource watched property for the movie with the name === name
+    axios.put('/api/movies', {name:name})
     .then(function (res) {
       console.log(res);
     })
